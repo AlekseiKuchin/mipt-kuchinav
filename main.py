@@ -1,18 +1,25 @@
-from kaggle_environments import make, evaluate
+from kaggle_environments import evaluate
 
-# Список агентов
-agents = ["rock_agent.py", "random_agent.py", "copy_opponent.py", "cyclic_agent.py", "counter_agent.py", "frequency_agent.py"]
+# Список файлов с кодами агентов
+agents = [
+    "rock_agent.py",    # Агент, выбирающий только камень
+    "random_agent.py",  # Случайный агент
+    "copy_opponent.py", # Агент, копирующий противника
+    "cyclic_agent.py",  # Цикличный агент
+    "counter_agent.py", # Агент, контрящий ходы
+]
 
-# Словарь для хранения результатов
+# Турнир: каждый агент против каждого
 results = {}
 
-# Запускаем турнир: каждый агент играет с каждым
 for i in range(len(agents)):
     for j in range(i + 1, len(agents)):
         agent1, agent2 = agents[i], agents[j]
-        score = evaluate("rps", [agent1, agent2], configuration={"episodeSteps": 100})
-        results[(agent1, agent2)] = score
 
-# Печатаем результаты
-for match, score in results.items():
-    print(f"Match {match[0]} vs {match[1]}: {score}")
+        # Оценка матча между двумя агентами
+        match_result = evaluate("rps", [agent1, agent2], configuration={"episodeSteps": 100})
+        results[(agent1, agent2)] = match_result
+
+# Вывод результатов
+for (agent1, agent2), score in results.items():
+    print(f"Match {agent1} vs {agent2}: {score}")
