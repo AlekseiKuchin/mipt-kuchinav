@@ -2,11 +2,11 @@ from kaggle_environments import evaluate
 
 # Список файлов с кодами агентов
 agents = [
-    "rock_agent.py",    # Агент, выбирающий только камень
-    "random_agent.py",  # Случайный агент
-    "copy_opponent.py", # Агент, копирующий противника
-    "cyclic_agent.py",  # Цикличный агент
-    "counter_agent.py", # Агент, контрящий ходы
+    "/content/mipt-kuchinav/rock_agent.py",    # Агент, выбирающий только камень
+    "/content/mipt-kuchinav/random_agent.py",  # Случайный агент
+    "/content/mipt-kuchinav/copy_opponent.py", # Агент, копирующий противника
+    "/content/mipt-kuchinav/cyclic_agent.py",  # Цикличный агент
+    "/content/mipt-kuchinav/counter_agent.py", # Агент, контрящий ходы
 ]
 
 # Турнир: каждый агент против каждого
